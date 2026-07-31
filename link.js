@@ -1,6 +1,6 @@
 function validate(){
 var a=document.f1.name.value;
-var b=document.f1.phone.value;
+var b=document.f1.mobile.value;
 var c=document.f1.email.value;
 var d=document.f1.event.value;
 
