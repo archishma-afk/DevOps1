@@ -5,7 +5,7 @@ var c=document.f1.email.value;
 var d=document.f1.event.value;
 
 for(var i=0;i<a.length;i++){
-if(a[i]>="0"&&a[i]<=9){
+if(a[i]>="0"&&a[i]<="9"){
 alert("name invalid");
 return false;}}
 
