@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: lightblue;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+        }
+
+        h2 {
+          color:darkblue;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background: green;
+            color: white;
+            margin-top: 15px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Event Registration Form</h2>
+
+    <form onsubmit="register(event)">
+
+        <label>Full Name</label>
+        <input type="text" id="name" required>
+
+        <label>Phone Number</label>
+        <input type="tel" id="mobile" required>
+
+        <label>Email</label>
+        <input type="email" id="email" required>
+
+        <label>Event</label>
+        <select id="event" required>
+            <option value="">Choose an event</option>
+            <option>Workshop</option>
+            <option>Hackathon</option>
+            <option>Seminar</option>
+        </select>
+
+        <input type="submit" value="Register">
+
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+<script>
+    function register(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let mobile = document.getElementById("mobile").value;
+    let email = document.getElementById("email").value.trim();
+    let selectedEvent = document.getElementById("event").value;
+
+    let message = document.getElementById("message");
+
+    // Name validation
+    if (!/^[A-Za-z ]+$/.test(name)) {
+        message.innerHTML = "Enter a valid name";
+        message.style.color = "red";
+        return;
+    }
+
+    // Mobile validation
+    if (!/^[0-9]{10}$/.test(mobile)) {
+        message.innerHTML = "Mobile number must contain 10 digits";
+        message.style.color = "red";
+        return;
+    }
+
+    // Event validation
+    if (selectedEvent === "") {
+        message.innerHTML = "Please select an event";
+        message.style.color = "red";
+        return;
+    }
+
+    // Success message
+    message.style.color = "green";
+    message.innerHTML =
+    "Congratulations, " + name + "!<br>" +
+    "You are successfully registered for " + selectedEvent + "!<br>" +
+    "Get ready for an amazing experience!";
+    }
+</script>
+
+</body>
+</html>
